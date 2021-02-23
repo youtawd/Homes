@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: Homes
-  password: Bolenwlr32pOQlp
-  host: localhost
+  username: <%= ENV["HOMES_DATABASE_USER"] %>
+  password: <%= ENV["HOMES_DATABASE_PASSWORD"] %>
+  host: <%= ENV["HOMES_DATABASE_HOST"] %>
 
 development:
   <<: *default
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: Homes_production
-  username: Homes
+  username: <%= ENV["HOMES_DATABASE_USER"] %>
   password: <%= ENV['HOMES_DATABASE_PASSWORD'] %>
